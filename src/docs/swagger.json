@@ -121,6 +121,28 @@
         }
       }
     },
+    "/logo": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500":{
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "url": "path"
+          }
+        ]
+      },
+      "put": {},
+      "delete": {}
+    },
     "/poster": {
       "get": {
         "description": "",
@@ -155,6 +177,9 @@
                   "example": "any"
                 },
                 "img_path": {
+                  "example": "any"
+                },
+                "date": {
                   "example": "any"
                 }
               }
@@ -220,6 +245,9 @@
                 },
                 "img_path": {
                   "example": "any"
+                },
+                "date": {
+                  "example": "any"
                 }
               }
             }
@@ -265,6 +293,9 @@
               "type": "object",
               "properties": {
                 "search_tag": {
+                  "example": "any"
+                },
+                "date": {
                   "example": "any"
                 },
                 "page_index": {
@@ -395,176 +426,7 @@
         }
       }
     },
-    "/user": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "club_id": {
-                  "example": "any"
-                },
-                "user_id": {
-                  "example": "any"
-                },
-                "location": {
-                  "example": "any"
-                },
-                "position": {
-                  "example": "any"
-                },
-                "img_path": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/poster/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "club_id": {
-                  "example": "any"
-                },
-                "user_id": {
-                  "example": "any"
-                },
-                "location": {
-                  "example": "any"
-                },
-                "position": {
-                  "example": "any"
-                },
-                "img_path": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/posters/search": {
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "search_tag": {
-                  "example": "any"
-                },
-                "page_index": {
-                  "example": "any"
-                },
-                "page_length": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/userClub/create": {
+    "/userPosterBookmarks": {
       "post": {
         "description": "",
         "parameters": [
@@ -575,6 +437,9 @@
               "type": "object",
               "properties": {
                 "userId": {
+                  "example": "any"
+                },
+                "posterId": {
                   "example": "any"
                 }
               }
@@ -587,67 +452,24 @@
           },
           "400": {
             "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/userClub/invite": {
-      "post": {
+    "/userPosterBookmarks/{userId}": {
+      "get": {
         "description": "",
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userId": {
-                  "example": "any"
-                },
-                "clubId": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
           },
-          "400": {
-            "description": "Bad Request"
-          },
-          "409": {
-            "description": "Conflict"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/userClub/remove": {
-      "delete": {
-        "description": "",
-        "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userId": {
-                  "example": "any"
-                },
-                "clubId": {
-                  "example": "any"
-                }
-              }
-            }
+            "name": "userId",
+            "in": "query",
+            "type": "string"
           }
         ],
         "responses": {
@@ -656,9 +478,78 @@
           },
           "400": {
             "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/userPosterBookmarks/{userId}/{posterId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
           },
-          "500": {
-            "description": "Internal Server Error"
+          {
+            "name": "posterId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "posterId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "posterId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "posterId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
