@@ -8,12 +8,11 @@ import {
   updateUserSettings,
 } from "../controllers/users/userController";
 
-const router = Router();
+const userRouter = Router();
 
-router.get("/user", listUsers);
-router.get("/user/:id", getUserData);
-router.post("/user", addUser);
-router.post("/user/:id", updateUserSettings);
-router.delete("/user/:id", deleteUserData);
-
-export default router;
+userRouter.get("/user", listUsers);
+userRouter.get("/user/:id", getUserData);
+userRouter.post("/user", addUser);
+userRouter.post("/user/:id", updateUserSettings);
+userRouter.delete("/user/:id", deleteUserData);
+export default userRouter;
