@@ -4,7 +4,7 @@ import pool from "@/libs/db";
 
 export const listUsers = async (_request: Request, response: Response) => {
   try {
-    const result = await pool.query("SELECT * FROM Users");
+    const result = await pool.query("SELECT * FROM AppUser");
     console.log("Get list of users from database");
     response.status(200).json(result.rows);
   } catch (error) {
@@ -16,7 +16,7 @@ export const listUsers = async (_request: Request, response: Response) => {
 export const getUserData = async (request: Request, response: Response) => {
   try {
     const result = await pool.query(
-      "SELECT * FROM UserSettings WHERE userid = $1",
+      "SELECT * FROM UserSettings WHERE user_id = $1",
       [request.params.id],
     );
 
@@ -30,11 +30,12 @@ export const getUserData = async (request: Request, response: Response) => {
 
 export const addUser = async (_request: Request, response: Response) => {
   try {
-    await pool.query("INSERT INTO Users (userid) VALUES (DEFAULT)");
-
-    response.status(200);
+    const result = await pool.query(
+      "INSERT INTO AppUser DEFAULT VALUES RETURNING *",
+    );
+    response.status(201).json(result.rows[0]);
   } catch {
-    response.status(500).json("Failed to add user data");
+    response.status(500).json({ error: "Failed to add user data" });
   }
 };
 
@@ -44,19 +45,26 @@ export const updateUserSettings = async (
 ) => {
   // No need to do anything since there is nothing in the user settings table
   // other than the user ID.
-  response.status(200);
+  response.status(200).json({ message: "No updatable user settings yet" });
 };
 
 export const deleteUserData = async (request: Request, response: Response) => {
   try {
-    await pool.query("DELETE FROM UserSettings WHERE userid = $1", [
+    await pool.query("DELETE FROM UserSettings WHERE user_id = $1", [
+      request.params.id,
+    ]);
+    const result = await pool.query("DELETE FROM AppUser WHERE id = $1", [
       request.params.id,
     ]);
 
+    if (result.rowCount === 0) {
+      return response.status(404).json({ error: "User not found" });
+    }
+
     console.log("Delete user data request processed");
-    response.status(200);
+    return response.status(200).json({ message: "User data deleted" });
   } catch (error) {
     console.error(error);
-    response.status(500).json("Failed to delete user data");
+    return response.status(500).json({ error: "Failed to delete user data" });
   }
 };

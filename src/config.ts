@@ -6,7 +6,6 @@ const config = {
   DB_NAME: process.env.DB_NAME,
   APP_PORT: process.env.APP_PORT,
 };
-console.log("Config:", config);
 
 if (process.env === undefined) {
   throw new Error("Environment variables are not defined");
