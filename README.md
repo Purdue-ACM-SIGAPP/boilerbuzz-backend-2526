@@ -8,19 +8,6 @@ Express + TypeScript API for Boilerbuzz.
 - npm 9+
 - PostgreSQL
 
-## Environment Variables
-
-Create a `.env` file in `boilerbuzz-backend/` with:
-
-```env
-DB_HOST=localhost
-DB_USER=postgres
-DB_PASSWORD=your_password
-DB_PORT=5432
-DB_NAME=boilerbuzz
-APP_PORT=3000
-```
-
 ## Install
 
 ```bash
