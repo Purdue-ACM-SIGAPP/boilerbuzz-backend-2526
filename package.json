@@ -23,26 +23,26 @@
   "homepage": "https://github.com/Purdue-ACM-SIGAPP/boilerbuzz-backend#readme",
   "dependencies": {
     "calculate-string-similarity": "^1.0.9",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
-    "module-alias": "^2.2.3",
-    "pg": "^8.16.3",
+    "cors": "2.8.6",
+    "dotenv": "17.3.1",
+    "express": "5.2.1",
+    "module-alias": "2.3.4",
+    "pg": "8.20.0",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.34.0",
+    "@eslint/js": "10.0.1",
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.5.2",
-    "@types/pg": "^8.15.5",
+    "@types/express": "5.0.6",
+    "@types/node": "25.4.0",
+    "@types/pg": "8.18.0",
     "@types/swagger-ui-express": "^4.1.8",
-    "eslint": "^9.34.0",
-    "nodemon": "^3.1.10",
-    "prettier": "^3.6.2",
+    "eslint": "10.0.3",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.1",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "nodemonConfig": {
     "watch": [

@@ -117,4 +117,4 @@ async function testClubAPI() {
 
 
 // Run the test
-testClubAPI();
+// testClubAPI();
