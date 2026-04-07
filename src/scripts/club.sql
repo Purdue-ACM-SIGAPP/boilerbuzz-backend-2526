@@ -1,3 +1,4 @@
 CREATE TABLE IF NOT EXISTS Club (
     id SERIAL PRIMARY KEY,
+    logo_path TEXT
 );
